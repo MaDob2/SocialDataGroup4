@@ -51,7 +51,7 @@ if viz=="Home":
     st.write("Welcome to our Solar Energy Project. Here, we delve into the fascinating world of solar power production and usage in Denmark. Please select the page you wish to explore on the sidebar to the left. There, you can also filter the data to customize your analysis.")
     st.write('')
     st.write("Our project is organized into three primary sections. The first section deals with total solar energy production and demand in Denmark in the context of rising gas prices. The second and third section are both based on data from the private solar energy company “EasyGreen”. Their dataset contains information on daily electricity usage and production on a household level. Geospatial visualizations as well as comparisons of production and self-usage can be explored. Subsequently, the main findings of the comparative analysis are summarized.")
-
+    st.image('images/houses_solar_panels.jpeg', use_column_width=True)
     #add some picture
 if viz == "Solar Energy Data in Denmark":
     # Integrafe html plot
@@ -228,9 +228,14 @@ if viz == "EasyGreen Geospatial Data":
     else:
         data = data[(data['usage_date'] >= selected_date_range[0]) & (data['usage_date'] <= selected_date_range[1])]
 
+
+
+
     ## Age range
     age_range = st.sidebar.slider("Filter map by customer age range", 0, 100, (0, 100))
     data = data[(data['age'] >= age_range[0]) & (data['age'] <= age_range [1])]
+    
+
 
     ## Production range
     max_range = int(data['totalProductPower'].max())
@@ -276,7 +281,7 @@ if viz == "EasyGreen Geospatial Data":
 
     view_state = pdk.ViewState(
         #longitude=10.38831, latitude=55.79594, zoom=6.2, min_zoom=5, max_zoom=11 if elevation_weight != 'age' else 7, pitch=41 if elevation_weight != 'age' else 0, bearing=20 if elevation_weight != 'age' else 0, height=700
-        longitude=10.38831, latitude=55.79594, zoom=6.2, min_zoom=5, max_zoom=11 if elevation_weight != 'age' else 7, pitch=41 if elevation_weight != 'age' else 0, height=700
+        longitude=10.38831, latitude=55.79594, zoom=6.2, min_zoom=5, max_zoom=11 if elevation_weight != 'age' else 7, bearing=20 if elevation_weight != 'age' else 0, height=700
     )
 
 
